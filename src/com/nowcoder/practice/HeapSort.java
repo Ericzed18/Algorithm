@@ -1,8 +1,9 @@
-package com.nowcoder;
+package com.nowcoder.practice;
 
 public class HeapSort {
+    
     private static void heapSort(int[] arr){
-        if (arr == null || arr.length<2){
+        if (arr == null||arr.length<2){
             return;
         }
         for (int i = 0; i < arr.length; i++) {
@@ -17,20 +18,16 @@ public class HeapSort {
     }
 
     private static void heapify(int[] arr, int i, int size) {
-        int left = i*2+1;
-        while (left<size){
-            int largest = arr[left] < arr[left+1]
-                    ? left+1
-                    :left;
-            largest = arr[i] < arr[largest]
-                    ? largest
-                    :i;
+        int index = i*2+1;
+        while (index<size){
+            int largest = arr[index]>arr[index+1]?index:index+1;
+            largest = arr[i]>arr[largest]?i:largest;
             if (largest == i){
                 break;
             }
             swap(arr,i,largest);
             i = largest;
-            left = i*2+1;
+            index = i*2+1;
         }
     }
 
@@ -45,9 +42,5 @@ public class HeapSort {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-    }
-
-    public static void main(String[] args) {
-
     }
 }
